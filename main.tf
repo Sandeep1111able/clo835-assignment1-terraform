@@ -48,11 +48,19 @@ resource "aws_security_group" "webapp_sg" {
 
 # Create EC2 instance
 resource "aws_instance" "webapp_ec2" {
-  ami                    = "ami-09e6f87a47903347c" 
+  ami                    = "ami-09e6f87a47903347c"  
   instance_type          = "t2.micro"
   subnet_id              = data.aws_subnets.default.ids[0]
   vpc_security_group_ids = [aws_security_group.webapp_sg.id]
   key_name               = var.key_name
+
+  user_data = <<-EOF
+              #!/bin/bash
+              sudo yum update -y
+              sudo yum install docker -y
+              sudo systemctl start docker
+              sudo systemctl enable docker
+              EOF
 
   tags = {
     Name = "CLO835-Assignment1-Instance"
