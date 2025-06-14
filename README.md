@@ -31,7 +31,7 @@ key_name           = "assignment1-keypair"
 
 1. **Clone this repository:**
    ```sh
-   git clone https://github.com/yourusername/clo835-assignment1-terraform.git
+   git clone https://github.com/Sandeep1111able/clo835-assignment1-terraform.git
    cd clo835-assignment1-terraform
    ```
 2. **Generating & Importing Key Pair:**
